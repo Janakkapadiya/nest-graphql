@@ -2,6 +2,51 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Author {
+  id: Int!
+  name: String!
+  books: [Book!]!
+}
+
+type Book {
+  id: Int!
+  title: String!
+  price: Int
+  author: Author!
+}
+
 type Query {
-  index: String!
+  getAllBooks: [Book!]!
+  getBookById(id: Int!): Book!
+  login(email: String!, password: String!): String!
+  getAllAuthors: [Author!]!
+}
+
+type Mutation {
+  addBook(addBookArgs: AddBookArgs!): String!
+  deleteBook(id: Int!): String!
+  updateBook(updateBookArgs: UpdateBookArgs!): String!
+  addAuthor(addAuthor: AddAuthorArgs!): String!
+  updateAuthor(updateAuthorArgs: UpdateAuthorArgs!): String!
+}
+
+input AddBookArgs {
+  title: String!
+  price: Int!
+  authorId: Int!
+}
+
+input UpdateBookArgs {
+  id: Int!
+  title: String
+  price: Int
+}
+
+input AddAuthorArgs {
+  name: String!
+}
+
+input UpdateAuthorArgs {
+  id: Int!
+  name: String!
 }

@@ -1,11 +1,15 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class BookEntity {
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
   @Column()
-  title: string;
+  name: string;
   @Column()
-  price: number;
+  email: string;
+  @Column()
+  password: string;
+  @Column()
+  role: string;
 }
