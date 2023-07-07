@@ -6,9 +6,7 @@ import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthorModule } from './author/author.module';
 import { UserModule } from './user/user.module';
-import { AuthModule } from './auth/auth.module';
-import { AuthResolver } from './auth/auth.resolver';
-import { AuthService } from './auth/auth.service';
+import { AuthResolver } from './auth/resolver/auth.resolver';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
@@ -38,6 +36,6 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
   ],
   controllers: [],
-  providers: [AuthResolver, AuthService],
+  providers: [],
 })
 export class AppModule {}

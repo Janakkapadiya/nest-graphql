@@ -15,10 +15,22 @@ type Book {
   author: Author!
 }
 
+type User {
+  id: Int!
+  name: String!
+  email: String!
+  password: String!
+  role: String!
+}
+
+type ResponseSchema {
+  access_token: String!
+  user: User!
+}
+
 type Query {
   getAllBooks: [Book!]!
   getBookById(id: Int!): Book!
-  login(email: String!, password: String!): String!
   getAllAuthors: [Author!]!
 }
 
@@ -28,6 +40,7 @@ type Mutation {
   updateBook(updateBookArgs: UpdateBookArgs!): String!
   addAuthor(addAuthor: AddAuthorArgs!): String!
   updateAuthor(updateAuthorArgs: UpdateAuthorArgs!): String!
+  login(loginArgs: LoginArgs!): ResponseSchema!
 }
 
 input AddBookArgs {
@@ -49,4 +62,9 @@ input AddAuthorArgs {
 input UpdateAuthorArgs {
   id: Int!
   name: String!
+}
+
+input LoginArgs {
+  email: String!
+  password: String!
 }

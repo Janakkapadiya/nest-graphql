@@ -29,6 +29,11 @@ export interface UpdateAuthorArgs {
     name: string;
 }
 
+export interface LoginArgs {
+    email: string;
+    password: string;
+}
+
 export interface Author {
     id: number;
     name: string;
@@ -42,10 +47,22 @@ export interface Book {
     author: Author;
 }
 
+export interface User {
+    id: number;
+    name: string;
+    email: string;
+    password: string;
+    role: string;
+}
+
+export interface ResponseSchema {
+    access_token: string;
+    user: User;
+}
+
 export interface IQuery {
     getAllBooks(): Book[] | Promise<Book[]>;
     getBookById(id: number): Book | Promise<Book>;
-    login(email: string, password: string): string | Promise<string>;
     getAllAuthors(): Author[] | Promise<Author[]>;
 }
 
@@ -55,6 +72,7 @@ export interface IMutation {
     updateBook(updateBookArgs: UpdateBookArgs): string | Promise<string>;
     addAuthor(addAuthor: AddAuthorArgs): string | Promise<string>;
     updateAuthor(updateAuthorArgs: UpdateAuthorArgs): string | Promise<string>;
+    login(loginArgs: LoginArgs): ResponseSchema | Promise<ResponseSchema>;
 }
 
 type Nullable<T> = T | null;

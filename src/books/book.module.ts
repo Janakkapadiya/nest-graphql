@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { BookResolver } from './book.resolver';
+import { BookResolver } from './resolver/book.resolver';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BookEntity } from './enity/book.entity';
 import { BookService } from './service/book.service';

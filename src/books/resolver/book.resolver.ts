@@ -1,14 +1,17 @@
 import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { Book } from './schema/book.schema';
-import { BookService } from './service/book.service';
-import { AddBookArgs } from './args/addBook.args';
-import { UpdateBookArgs } from './args/updateBook.args';
+import { Book } from '../schema/book.schema';
+import { BookService } from '../service/book.service';
+import { AddBookArgs } from '../args/addBook.args';
+import { UpdateBookArgs } from '../args/updateBook.args';
+import { UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/guards/jwtauthguard';
 
 @Resolver(() => Book)
 export class BookResolver {
   constructor(private readonly bookService: BookService) {}
 
   @Query(() => [Book])
+  @UseGuards(JwtAuthGuard)
   getAllBooks() {
     return this.bookService.findAllBooks();
   }

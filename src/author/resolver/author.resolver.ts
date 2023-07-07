@@ -1,8 +1,8 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { Author } from './schema/author.schema';
-import { AuthorService } from './service/author.service';
-import { AddAuthorArgs } from './args/addAuthor.args';
-import { UpdateAuthorArgs } from './args/updateAuthor.args';
+import { Author } from '../schema/author.schema';
+import { AuthorService } from '../service/author.service';
+import { AddAuthorArgs } from '../args/addAuthor.args';
+import { UpdateAuthorArgs } from '../args/updateAuthor.args';
 
 @Resolver(() => Author)
 export class AuthorResolver {
